@@ -1,0 +1,624 @@
+
+/*
+* Skeleton V1.2
+* Copyright 2011, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 6/20/2012
+*/
+
+
+/* Table of Content
+==================================================
+	#Reset & Basics
+	#Basic Styles
+	#Site Styles
+	#Typography
+	#Links
+	#Lists
+	#Images
+	#Buttons
+	#Forms
+	#Forms
+	#Misc */
+
+/* #Reset & Basics (Inspired by E. Meyers)
+================================================== */
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    background: #f8f8f8;
+    quotes: none;
+    clear: both;
+}
+
+blockquote:before {
+    font-family: 'icomoon';
+    -webkit-font-smoothing: antialiased;
+    content: "e080";
+    font-size: 30px;
+    position: absolute;
+    left: 19px;
+    top: 12px;
+}
+
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+.toggle .content, .accordian .content, .tabs .content {
+}
+
+/* #Basic Styles
+================================================== */
+
+body {
+    font: 13px/1.5 'Open Sans', sans-serif;
+    color: #707070;
+    line-height: 1.6;
+    /*background: black;*/
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tab-highlight-color: rgba(0,0,0,0);
+}
+
+/* #Typography
+================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 10px;
+    font-weight: 300;
+    line-height: 1.6;
+    font-family: 'Oswald', sans-serif;
+    /*font-family: 'Droid Serif', serif;*/
+    -webkit-font-smoothing: antialiased;
+    color: #333;
+    margin-top: 40px;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+    font-weight: inherit;
+}
+
+h1 {
+    font-size: 32px;
+}
+
+h2 {
+	/*color: #555;*/
+	font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 15px;
+}
+
+h6 {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.subheader {
+    color: #777;
+}
+
+p {
+    margin: 0 0 20px;
+}
+
+p img {
+    margin: 0;
+}
+
+p.lead {
+    font-size: 21px;
+    line-height: 27px;
+    color: #777;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: 700;
+}
+
+small {
+    font-size: 80%;
+}
+
+/*	Blockquotes  */
+
+blockquote,
+blockquote p {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 24px;
+    color: #777;
+    position: relative;
+}
+
+blockquote {
+    margin: 0 0 20px;
+    padding: 20px 21px 0 65px;
+    border: 1px solid rgb(241, 241, 241);
+    box-shadow: inset 0 0 0 1px white;
+}
+
+blockquote:before {
+    /*color: black;*/
+    content: "\e080";
+    font-size: 30px;
+    position: absolute;
+    left: 19px;
+    top: 17px;
+}
+
+blockquote cite {
+    display: block;
+    font-size: 12px;
+    color: #555;
+}
+
+blockquote cite:before {
+    content: "\2014 \0020";
+}
+
+blockquote cite a,
+blockquote cite a:visited,
+blockquote cite a:visited {
+    color: #555;
+}
+
+hr {
+    display: block;
+    clear: both;
+    height: 0;
+    margin: 40px 0 20px 0;
+    border: solid #ddd;
+    border-width: 1px 0 0;
+}
+
+/* #Links
+================================================== */
+
+a {
+	-o-transition:.5s;
+	-ms-transition:.5s;
+	-moz-transition:.5s;
+	-webkit-transition:.5s;
+    transition:.5s;
+
+    /* Remove gray flash on mobile */
+    -webkit-tab-highlight-color: rgb(255,0,0,0.5);
+}
+
+a {
+    text-decoration: none;
+    color: #1F99B4;
+}
+
+a:hover,
+a:focus {
+    color: #333;
+    outline: 0;
+}
+
+p a,
+p a:visited {
+    line-height: inherit;
+}
+
+/* #Lists
+================================================== */
+
+ul {
+    list-style: none outside;
+}
+
+ol {
+    list-style: decimal;
+}
+
+ol,
+ul.square,
+ul.circle,
+ul.disc {
+    margin-left: 17px;
+    margin-bottom: 20px;
+}
+
+.list {
+    margin-bottom: 20px;
+}
+
+ul.square {
+    list-style: square outside;
+}
+
+ul.circle {
+    list-style: circle outside;
+}
+
+ul.disc {
+    list-style: disc outside;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+    margin: 4px 0 5px 30px;
+    font-size: 90%;
+}
+
+ul ul li,
+ul ol li,
+ol ol li,
+ol ul li {
+    margin-bottom: 6px;
+}
+
+li {
+    margin: 0;
+    line-height: 18px;
+}
+
+ul.large li {
+    line-height: 21px;
+}
+
+li p {
+    line-height: 21px;
+}
+
+/* #Images
+================================================== */
+
+img.scale-with-grid {
+    height: auto;
+    max-width: 100%;
+}
+
+/* #Buttons
+================================================== */
+
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+    display: inline-block;
+    border: 0;
+    padding: 8px 10px;
+    text-decoration: none;
+    font-family: "HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: normal;
+    margin: 0 20px 20px 0;
+    color: white;
+    background: #1F99B4;
+    cursor: pointer;
+    outline: none;
+    transition:.5s;
+
+    /* Reset ios style */
+    -webkit-appearance: none;
+    border-radius: 0;
+    box-shadow: inset 0 0 -1px rgba(255, 256, 255, 0.42);
+    border: 1px solid rgba(0, 0, 0, 0.13);
+}
+
+.button:hover,
+ button:hover,
+ input[type="submit"]:hover,
+ input[type="reset"]:hover,
+ input[type="button"]:hover, 
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+    background: #333;
+    color: #fff;
+}
+
+.button:active,
+button:active,
+input[type="submit"]:active,
+input[type="reset"]:active,
+input[type="button"]:active {
+    background: #333;
+}
+
+.button.full-width,
+button.full-width,
+input[type="submit"].full-width,
+input[type="reset"].full-width,
+input[type="button"].full-width {
+    width: 100%;
+    padding-right: 0!important;
+    padding-left: 0!important;
+    text-align: center;
+}
+
+    /* Fix for odd Mozilla border & padding issues */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+focus {
+    outline:none;
+}
+
+::-moz-focus-inner {border:0;}
+
+.button:visited,
+button:visited {
+    color: #fff;
+}
+
+.button.medium,
+button.medium {
+    font-size: 16px;
+}
+
+.button.large,
+button.large {
+    font-size: 20px;
+}
+
+.button.gray,
+button.gray {
+    background: #a7a7a7;
+}
+
+.button.gray:hover,
+button.gray:hover {
+    background: #2bafcc;
+}
+
+
+ /* ===================================================== */
+ /* Forms
+ /* ===================================================== */
+  
+
+form {
+    margin-bottom: 20px;
+}
+
+fieldset {
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+textarea,
+select {
+    display: block;
+    width: 210px;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 6px 4px;
+    max-width: 100%;
+    border: 1px solid #eee;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    font: 13px HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    outline: none;
+    color: #777;
+    background: #fff;
+}
+
+/* Removes top shadow on ios*/
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="url"],
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+select {
+    padding: 0;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border: 1px solid #aaa;
+    color: #444;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 3px rgba(0,0,0,.2);
+    box-shadow: 0 0 3px rgba(0,0,0,.2);
+}
+
+textarea {
+    min-height: 60px;
+}
+
+label,
+legend {
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+select {
+    width: 220px;
+}
+
+input[type="checkbox"] {
+    display: inline;
+}
+
+label span,
+legend span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #444;
+}
+
+/* #Misc
+================================================== */
+
+.no-mb {
+    margin-bottom: 0!important;
+}
+
+.half-bottom {
+    margin-bottom: 10px!important;
+}
+
+.mb {
+    margin-bottom: 20px!important;
+}

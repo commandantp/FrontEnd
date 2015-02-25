@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]&gt;<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]&gt;<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]&gt;<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]&gt;<!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+	<title>
+		Horizon
+	</title>
+	<meta name="description" content="">
+    <meta name="author" content="Zack"><!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><!-- CSS
+    ================================================== -->
+    <meta charset="utf-8">
+    <!-- Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <!-- Pretty Print -->
+    <link rel="stylesheet" href="assets/prettify/prettify.css" />
+    <link  rel="stylesheet" href="assets/base.css" type="text/css">
+    <link  rel="stylesheet" href="assets/grid.css" type="text/css">
+    <link rel="stylesheet" href="assets/style.css">
+    <!--[if lt IE 9]&gt;
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+    <!-- SCRIPTS -->
+    <script src="assets/jquery.min.js"></script>
+    <script src="assets/prettify/prettify.js"></script>
+
+</head>
+<body>
+	<script>
+		jQuery(document).ready(function($) {
+
+			// CREATE TOC
+			var newLine, el, title, link;
+			var ToC = '';
+
+			$("h1").not('.header').each(function() {
+
+				el = $(this);
+				if( $(this) !== 'undefined' ) {
+
+					// Get id text
+					title = el.text();
+					link = "#" + el.attr("id");
+
+					var children = '';
+
+					// Nested headers
+					el.nextUntil('h1', 'h2').each(function() {
+						var title2 = $(this).text();
+						var link2 = "#" + $(this).attr("id");
+						children +=
+						"<li>" +
+						"<a href='" + link2 + "'>" +
+						title2 +
+						"</a>" +
+						"</li>";
+					});
+
+					// If there are nested headers format it
+					if( children.length !== 0 ) {
+						// New html
+						newLine =
+						"<li class='dropdown'>" +
+						"<a href='" + link + "'>" +
+						title +
+						"</a>";
+						newLine += '<ul class="sub">' + children + '</ul>';
+					} else {
+						newLine =
+						"<li>" +
+						"<a href='" + link + "'>" +
+						title +
+						"</a>";
+					}
+
+					newLine += "</li>";
+
+					ToC += newLine;
+				}
+
+			});
+
+			$(".contents-list").prepend(ToC);
+
+			// CREATE TOGGLE
+			$('.contents-list .sub').toggle();
+			$('.contents-list .dropdown>a').click(function() {
+				$(this).parent().children('.sub').slideToggle();
+				return false;
+			});
+
+		});
+	</script>
+
+	<div class="container">
+		<hr/>
+		<h1 class="header">Horizon Documentation</h1>
+		<p class="info">Thank you for purchasing Horizon. If you have any questions, you can contact me via my profile page <a href="http://themeforest.net/user/Zorbix">Zorbix onThemeForest</a>
+			<hr/>
+
+			<ul class="contents-list"></ul>
+
+			<div class="content"><h1 id="the-basics">The basics</h1>
+<h2 id="installation">Installation</h2>
+<p>These folders and files are required to get started, upload them to your web server. The contact function require a PHP web server to function.</p>
+<p>These are the required folders and files:</p>
+<ul>
+<li>css/</li>
+<li>img/</li>
+<li>js/</li>
+<li>php/</li>
+<li>index.html</li>
+</ul>
+<h2 id="choosing-your-index-html-version">Choosing your index.html version</h2>
+<p>To start choose which index page you would like to use as a template.</p>
+<ul>
+<li>index.html - Single slider image</li>
+<li>index-mult.html - Multiple slider images</li>
+<li>index-video - Video background</li>
+<li>index-pattern - Pattern slider background</li>
+<li>index-parallax - For a parallax background</li>
+</ul>
+<p>Rename your choice page to <code>index.html</code>.</p>
+<h2 id="replacing-images">Replacing images</h2>
+<p>Placeholders for all images are in the folder <code>img</code>. The easist way to
+replace them with your own is to just replace the relevent placeholder file with your own. The placeholder image will give you an idea of the size of image needed, but mostly this is just a guideline.</p>
+<h2 id="adding-your-logo">Adding your logo</h2>
+<p>Replace the logo file <code>img/logo.png</code>. To keep the logo sharp on retina screens, make the logo twice the width you&#39;d like it to be.</p>
+<p>To change the width look for the following heading:</p>
+<pre><code class="prettyprint linenums">    &lt;!-- LOGO --&gt;</code></pre>
+<p>And change the img width tag where it currently is &#39;70px&#39;:</p>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;header&quot;&gt;
+    &lt;div class=&quot;container&quot;&gt;
+
+        &lt;!-- LOGO --&gt;
+        &lt;a href=&quot;&lt;?php echo &quot;index.$ext&quot;; ?&gt;&quot; class=&quot;logo&quot;&gt;
+            &lt;img src=&quot;img/logo.png&quot; width=&quot;70px&quot; alt=&quot;Horizon&quot;&gt;
+        &lt;/a&gt;</code></pre>
+<h2 id="changing-the-colors">Changing the colors</h2>
+<p>To use one of the preset colors or the custom stylesheet, replace the link to the color stylesheet located near the bottom of the <code>head</code> tag.</p>
+<p>Horizon comes with several preset colors, but to choose another we have provided you with a custom stylesheet <code>css/style-custom.css</code> where you can choose any combination. Just replace all instances of [color] with your own.</p>
+<p>Change the <code>style-default.css</code> to one of the following:</p>
+<ul>
+<li>style-custom.css</li>
+<li>style-green.css</li>
+<li>style-orange.css</li>
+<li>style-darkpurple.css</li>
+<li>style-burgundy.css</li>
+<li>style-custom.css</li>
+<li>style-yellow.css</li>
+<li>style-lightblue.css</li>
+<li>style-pink.css</li>
+<li>style-mint.css</li>
+<li>style-red.css</li>
+<li>style-navy.css</li>
+<li>style-purple.css</li>
+</ul>
+<p>Look for this link in the header section:</p>
+<pre><code class="prettyprint linenums">    &lt;!-- Change Color Stylesheet Here --&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;css/colors/default.css&quot;&gt;</code></pre>
+<h2 id="the-menu">The Menu</h2>
+<p>The menu is just a nested unordered list. The current page needs a class of <code>.current</code> on the anchor and a dropdown li needs <code>.dropdown</code>. A dropdown is a <code>ul</code> within a <code>li</code>. The menu is designed to go three levels deep.</p>
+<h2 id="headings">Headings</h2>
+<p>For sections headings without a description:</p>
+<pre><code class="prettyprint linenums">    &lt;h1 class=&quot;title&quot;&gt;Our Blog&lt;/h1&gt;</code></pre>
+<p>For section headings with a description:</p>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;section-title&quot;&gt;
+        &lt;h1 class=&quot;title&quot;&gt;Our Blog&lt;/h1&gt;
+        &lt;p class=&quot;description&quot;&gt;Welcome to our blog.&lt;/p&gt;
+    &lt;/div&gt;</code></pre>
+<p>For sub headings (any heading tag can be used):</p>
+<pre><code class="prettyprint linenums">    &lt;h5 class=&quot;sub-title&quot;&gt;Heading&lt;/h5&gt;</code></pre>
+<h1 id="sliders-video-banner">Sliders &amp; video Banner</h1>
+<h2 id="main-slider">Main slider</h2>
+<p>Replace all the images in <code>img/slider/</code>. The first image <code>bg-1.jpg</code> will be used for the single background slider and the parallax slider.</p>
+<h3 id="animations">Animations</h3>
+<p>The animations use animate.css so you can choose any animation from this set. Change the <code>data-animation</code> tag for the element you would like to change or add to a new element.</p>
+<p>See the website for examples
+(Animate.css)[http://daneden.github.io/animate.css/]</p>
+<h2 id="bxslider">Bxslider</h2>
+<p>All the other sliders are controlled with bxslider. You can change the settings in <code>js/custom.js</code>. Each <code>&lt;li&gt;</code> is a slide and anything can go inside.</p>
+<p><a href="http://bxslider.com/">Bxslider Documentation</a></p>
+<h2 id="revolution-slider">Revolution slider</h2>
+<p>The revolution slider is provided in the index page <code>index-rev.html</code> so rename this to index.html if you would like to use it.</p>
+<p>As default the slider refers the placeholder image <code>img/slider/bg-1.jpg</code>,
+so to get started quickly all you need do is replace this image with your own and adapt the text within the slider, look for the heading:</p>
+<pre><code class="prettyprint linenums">&lt;!-- SLIDER --&gt;</code></pre>
+<p>Each <code>&lt;li&gt;</code> is a slide. The main text is within the <code>&lt;h1&gt;</code> tag and the list is in the div tag below it.</p>
+<p>The documentation for the revolusion slider is in the folder rs-plugin. </p>
+<p>If you add more slides or make your own slider, you MUST have a background as the first tag inside the li.</p>
+<h2 id="testimonial-slider">Testimonial slider</h2>
+<p>To change the background for the testimonial slider, replace the placeholder in <code>img/bg-testimonial.jpg</code>.</p>
+<p>To change any of the settings such as the speed, you&#39;ll find the settings under the Testimonial slider heading in <code>js/main.js</code></p>
+<h2 id="video-slider">Video Slider</h2>
+<p>Under <code>&lt;!-- Slider --&gt;</code> within the anchor tag <code>#bgandVideo</code>, change the video url to your youtube url.</p>
+<p>If you have problems, try replacing &#39;https&#39; with &#39;http&#39; in your url if it is &#39;https&#39; and always double check the url by pasting it in your browser.</p>
+<p>NOTE: This is a desktop only feature, mobile devices won&#39;t cope with the demand, therefor a placeholder image is provided for mobile devices <code>img/slider/video-placeholder.jpg</code>.</p>
+<p>The video uses the popular ytplayer library:</p>
+<p><a href="http://pupunzi.open-lab.com/mb-jquery-components/jquery-mb-ytplayer/">YTplayer</a></p>
+<h1 id="basic-structure">Basic Structure</h1>
+<h2 id="columns">Columns</h2>
+<p>These are the columns available to you. Add one of classes below and add &#39;.last&#39; to the last div.</p>
+<ul>
+<li>one-half</li>
+<li>one-third</li>
+<li>two-thirds one-fourth</li>
+<li>three-fourths</li>
+<li>one-fifth</li>
+<li>one-sixth</li>
+</ul>
+<h2 id="sidebar">Sidebar</h2>
+<p>Give your widget containers a class of <code>widget</code>. </p>
+<pre><code class="prettyprint linenums">    &lt;aside class=&quot;aside one-fourth column&quot;&gt;
+        &lt;div class=&quot;widgets&quot;&gt;
+            &lt;div class=&quot;widget&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;widget&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/aside&gt;</code></pre>
+<h1 id="contact-form">Contact Form</h1>
+<p>The contact form is a working form but will need a server running PHP and a mail server. But deployment servers should be setup for this. Add your email to the <code>config.php</code> file in the php folder.</p>
+<pre><code class="prettyprint linenums">    $config[&#39;contact_email&#39;] = &quot;example@example.com&quot;;</code></pre>
+<h1 id="search">Search</h1>
+<p>For the search features you need your cx key from google <a href="http://www.google.co.in/cse/">get it here</a>. Set you cx key in the <code>js\main.js</code> file. To use google search your site needs to have been indexed by google.</p>
+<pre><code class="prettyprint linenums">    search_id = &#39;&#39;,</code></pre>
+<h1 id="elements">Elements</h1>
+<h2 id="googlemaps">Googlemaps</h2>
+<p>You need the latitude and longtitude of your location. You can get them very easily from this website:</p>
+<p>(itouchmap)[http://itouchmap.com/latlong.html]</p>
+<p>Just input your address and it will give you your longtitude and latitude.</p>
+<p>Set them in <code>js/main.js</code> at the top of the file:</p>
+<pre><code class="prettyprint linenums">    lat = 51.514617,
+    lng = -0.190359;</code></pre>
+<p>Customise the location window information in the index page under:</p>
+<pre><code class="prettyprint linenums">    &lt;!-- MAP LOCATION WINDOW --&gt;</code></pre>
+<h2 id="buttons">Buttons</h2>
+<h3 id="colors">Colors</h3>
+<p>Default is a standard gray button. Alternatively add
+one of these classes:</p>
+<ul>
+<li><code>.outline</code> - For the lined button</li>
+<li><code>.color</code> - For the colored button</li>
+</ul>
+<p>For example:</p>
+<pre><code class="prettyprint linenums">    &lt;a href=&#39;#&#39; class=&quot;button outline&quot;&gt;&lt;/a&gt;
+    &lt;a href=&#39;#&#39; class=&quot;button color&quot;&gt;&lt;/a&gt;
+    &lt;button class=&quot;outline&quot;&gt;&lt;/button&gt;
+    &lt;button class=&quot;color&quot;&gt;&lt;/button&gt;</code></pre>
+<h3 id="sizes">Sizes</h3>
+<p>To change the default size add:</p>
+<ul>
+<li><code>small</code></li>
+<li><code>medium</code></li>
+<li><code>large</code></li>
+</ul>
+<p>For example:</p>
+<pre><code class="prettyprint linenums">    &lt;a class=&quot;button large&quot;&gt;&lt;/a&gt;
+    &lt;button class=&quot;large&quot;&gt;&lt;/button&gt;</code></pre>
+<h3 id="width">Width</h3>
+<p>To make the button full width add </p>
+<ul>
+<li><code>full-width</code></li>
+</ul>
+<p>For example: </p>
+<pre><code class="prettyprint linenums">    &lt;a class=&quot;button full-width&quot;&gt;&lt;/a&gt;
+    &lt;button class=&quot;full-width&quot;&gt;&lt;/button&gt;</code></pre>
+<h3 id="example-buttons">Example Buttons</h3>
+<pre><code class="prettyprint linenums">    &lt;a href=&quot;#&quot; class=&quot;button medium outline&quot;&gt;&lt;/a&gt;
+    &lt;button class=&quot;large color&quot;&gt;&lt;/button&gt;</code></pre>
+<h3 id="icons-with-buttons">Icons with buttons</h3>
+<p>Add any icon class to a &#39;i&#39; inside an anchor from the font-awsome set.</p>
+<pre><code class="prettyprint linenums">    &lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-info&quot;&gt;&lt;/i&gt;Icon Info&lt;/a&gt;</code></pre>
+<p><a href="http://fortawesome.github.io/Font-Awesome/icons/">Font awesome icons</a></p>
+<p>To find an icon, go to the page linked above which lists all font awesome icons. To use an icon copy the text next to it and use instead of the &#39;fa-info&#39; in the above example. The following example uses a cloud icon instead:</p>
+<pre><code class="prettyprint linenums">&lt;a class=&quot;button&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;fa fa-cloud&quot;&gt;&lt;/i&gt;Icon Cloud&lt;/a&gt;</code></pre>
+<h2 id="alerts">Alerts</h2>
+<p>For an alert give a class of alert, and to specify its type add one of the following classes <code>success</code>, <code>warning</code>, <code>error</code> or <code>notice</code>. Inside you need a anchor for the close button.</p>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;alert notice&quot;&gt;
+        [CONTENT]
+        &lt;a href=&quot;#&quot; class=&quot;alert-button&quot;&gt;&lt;/a&gt;
+    &lt;/div&gt;</code></pre>
+<h2 id="accordians-toggles-and-tabs">Accordians, Toggles and Tabs</h2>
+<p>Accordions, toggles and tabs work in a similar way. </p>
+<h3 id="accordians">Accordians</h3>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;accordian&quot;&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt; 
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</code></pre>
+<h3 id="toggle">Toggle</h3>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;toggle&quot;&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</code></pre>
+<h3 id="tabs">Tabs</h3>
+<p>Tabs additionally need a class of <code>tab</code> plus it&#39;s order number starting with 0, ie <code>tab2</code>. </p>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;tabs&quot;&gt;
+        &lt;h6 class=&quot;triger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;tab0 content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h6 class=&quot;triger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;tab1 content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;h6 class=&quot;triger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;tab2 content&quot;&gt;
+            &lt;p&gt;[CONTENT]&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;</code></pre>
+<h3 id="sidetabs">Sidetabs</h3>
+<p>Side tabs work in a very similar way to the normal tabs just give a 
+class of <code>sidetabs</code>.</p>
+<pre><code class="prettyprint linenums">    &lt;div class=&quot;sidetabs&quot;&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;tab0 content&quot;&gt;[CONTENT]&lt;/div&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;tab0 content&quot;&gt;[CONTENT]&lt;/div&gt;
+        &lt;h6 class=&quot;trigger&quot;&gt;[TITLE]&lt;/h6&gt;
+        &lt;div class=&quot;tab0 content&quot;&gt;[CONTENT]&lt;/div&gt;
+    &lt;/div&gt;&lt;!-- End .sidetabs --&gt;</code></pre>
+<h3 id="adding-icons">Adding Icons</h3>
+<p>To add a icon to a tab inside the trigger add a <code>i</code> tag with your
+icon class. </p>
+<pre><code class="prettyprint linenums">    &lt;h6 class=&quot;trigger&quot;&gt;&lt;i class=&quot;icon-lightning&quot;&gt;&lt;/i&gt;&lt;/h6&gt;</code></pre>
+<h2 id="tooltips">Tooltips</h2>
+<p>The tooltips are provided by the Tipsy jQuery plugin, the hook is the data attribute <code>data-hook=&#39;tooltip&#39;</code>. For more usage options see the Tipsy documentation.</p>
+<p><a href="http://onehackoranother.com/projects/jquery/tipsy/">Tipsy Documentation</a></p>
+<pre><code class="prettyprint linenums">    &lt;a title=&quot;I am a tool tip!&quot; data-hook=&quot;tooltip&quot;&gt;Tool tip 1&lt;/a&gt;</code></pre>
+<h2 id="highlights">Highlights</h2>
+<p>You have the option of a gray or color highlight, you can add these to spans or anchors and can combine them with tooltips.</p>
+<h3 id="colour">Colour</h3>
+<pre><code class="prettyprint linenums">    &lt;span class=&quot;highlight-color&quot;&gt;[CONTENT]&lt;/span&gt;</code></pre>
+<h3 id="gray">Gray</h3>
+<pre><code class="prettyprint linenums">    &lt;span class=&quot;highlight-gray&quot;&gt;[CONTENT]&lt;/span&gt;</code></pre>
+<h3 id="tooltips">Tooltips</h3>
+<pre><code class="prettyprint linenums">    &lt;a class=&quot;highlight-color&quot; title=&quot;I am a tool tip!&quot; data-hook=&quot;tooltip&quot;&gt;[CONTENT]&lt;/a&gt;</code></pre>
+<h2 id="dropcaps">Dropcaps</h2>
+<p>Just add a class of <code>dropcap</code> to a span around your first letter. For a colored dropcap add the class <code>color</code></p>
+<pre><code class="prettyprint linenums">    &lt;span class=&quot;dropcap&quot;&gt;D&lt;/span&gt;
+    &lt;span class=&quot;dropcap color&quot;&gt;D&lt;/span&gt;</code></pre>
+<h2 id="video">Video</h2>
+<p>For a responsive video that will size to it&#39;s container, give an embed video a wrapping class of <code>video-wrapper</code>. See the third blog item on the <code>blog.html</code> page for an example.</p>
+<h2 id="icons">Icons</h2>
+<p>The icon set is font awesome, please see their website for more information and a list of availible icons.
+<a href="http://fontawesome.io/icons">Font Awesome</a></p>
+<p>To find an icon, go to the page linked above which lists all font awesome icons. To use an icon copy the text next to it and use instead of the &#39;fa-book&#39; in the example below.</p>
+<pre><code class="prettyprint linenums">    &lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt;</code></pre>
+<p>For example to use the cloud icon which has the text &#39;fa-cloud&#39; you would
+use it as follows:</p>
+<pre><code class="prettyprint linenums">    &lt;i class=&quot;fa fa-cloud&quot;&gt;&lt;/i&gt;</code></pre>
+<p>And the star icon:</p>
+<pre><code class="prettyprint linenums">    &lt;i class=&quot;fa fa-star&quot;&gt;&lt;/i&gt;</code></pre>
+<p>To add an unordered list, just add a <code>i</code> tag at the beginning of the <code>li</code>.</p>
+<pre><code class="prettyprint linenums">    &lt;ul&gt;
+        &lt;li&gt;&lt;i class=&quot;fa fa-book&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;fa fa-pencil&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;i class=&quot;fa fa-star&quot;&gt;&lt;/i&gt;&lt;/li&gt;
+    &lt;/ul&gt;</code></pre>
+<h2 id="starting-animations">Starting animations</h2>
+<p>To use, give an element a class of animated then a attribute of <code>data-animate</code> with your chosen animation and a attribute of 
+<code>data-animation-delay</code> to adjust timing. A delay is optional, you can leave off this attribute entirely. Give the delay time in milisecounds. See the Animate documentation to see demos of the animation types you can use.</p>
+<p>For example, to add an animation to a anchor do the following:</p>
+<pre><code class="prettyprint linenums">    &lt;a href=&quot;#&quot; class=&quot;animated&quot; data-animate=&quot;fadeInDown&quot; data-animate-delay=&quot;0&quot;&gt;</code></pre>
+<p><a href="https://daneden.me/animate/">Animate.css Documentation</a></p>
+<h1 id="portfolio">Portfolio</h1>
+<p>The portfolio uses the isotope jquery plugin. </p>
+<p><a href="http://isotope.metafizzy.co/">Documentation</a></p>
+<h2 id="adding-your-images">Adding your images</h2>
+<p>Just replace the images in <code>img/portfolio</code> keeping the same file structure and filenames.</p>
+<h2 id="changing-the-categories">Changing the categories</h2>
+<p>Look for the heading <code>&lt;!-- CATEGORIES --&gt;</code></p>
+<p>This is a list of your portfolio categories. The inner <code>li</code> text
+is what is displayed but the <code>data-cat</code> attribute is the categories your
+items will belong to, so keep them to one lowercase word. The displayed text and the <code>data-cat</code> text do not have to match.</p>
+<pre><code class="prettyprint linenums">    &lt;ul class=&quot;filter-menu&quot;&gt;
+            &lt;li class=&quot;selected&quot; data-cat=&quot;*&quot;&gt;All&lt;/li&gt;
+            &lt;li data-cat=&quot;[CAT]&quot;&gt;[VISIBLE CAT]&lt;/li&gt;
+            &lt;li data-cat=&quot;[CAT]&quot;&gt;[VISIBLE CAT]&lt;/li&gt;
+            &lt;li data-cat=&quot;[CAT]&quot;&gt;[VISIBLE CAT]&lt;/li&gt;
+    &lt;/ul&gt;</code></pre>
+<p>Then you can assign your portfolio items to a category using 
+the data-cat attribute on the items wrapping tag <code>.port-item</code>.</p>
+<pre><code class="prettyprint linenums">    &lt;article class=&quot;item&quot; data-cat=&quot;[CAT]&quot;&gt;</code></pre>
+<h2 id="the-prject-loader">The prject loader</h2>
+<p>The <code>.project-btn</code> anchor should point your project details page, there are two templates provided <code>single-project.html</code>, <code>single-project-full.html</code>. Duplicate these and change the details and file name. Then use your new filename in the projectBtn anchor. The images for the slider are in <code>img/portfolio/slider/</code>.</p>
+<h2 id="lightbox">Lightbox</h2>
+<p>The third portfolio item is a lightbox item, use this as a template.</p>
+<h1 id="files">files</h1>
+<h2 id="css">css</h2>
+<ul>
+<li>base.css - Contains the reset CSS and base stylings for header tags, form elements, blockquote, that sort of thing.</li>
+<li>grid.css - The grid layout.</li>
+<li>icons.css - CSS relating to icons, in particular it contains all the styling for the social icons.</li>
+<li>scripts.css - This is the CSS for external javascript libraries.</li>
+<li>layout.css - The media queries that will make your site responsive.</li>
+<li>colors/ - All the color options are in this folder</li>
+</ul>
+<h2 id="javscript">Javscript</h2>
+<ul>
+<li>main.js - Is where the javascript is intialized and where to change settings.</li>
+<li>scripts.js - All third party scripts compressed, seperate versions are provided in the assets folder. </li>
+<li>plugins.js - Custom plugins for the theme.</li>
+</ul>
+<h1 id="got-questions-">Got Questions?</h1>
+<p>If you have any questions please use the item comments page or email me via my <a href="http://themeforest.net/user/Zorbix">profile page</a></p>
+</div>
+
+		</div><!-- End .container -->
+		<script>prettyPrint();</script>
+	</body>
+	</html>

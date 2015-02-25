@@ -1,0 +1,190 @@
+/* 
+========================
+  GRIDINATOR CSS v0.4.1
+  http://gridinator.com/
+  
+  GRIDINATOR CSS is a very basic framework to create
+  grid-based layouts. The content of this file is 
+  provided as-is, without support.
+  
+  If you would like to contact GRIDINATOR to suggest
+  improvements, to ask for help or to file a bug report, 
+  please feel free to email: gridinator@steff.me
+  
+  Your grid settings:
+    column: 12
+    column width: 50px
+    column margin: 40px
+    container margin: 10px
+    
+========================
+*/
+
+.container {
+  position: relative;
+  width: 980px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.column, .columns {
+  float: left;
+  margin-right: 4%;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.column.last {
+  margin-right: 0;
+}
+
+.children-halfs .column,
+.one-half.column {
+  width: 48%;
+}
+
+.children-fourths .column,
+.one-fourth.column {
+  width: 22%;
+}
+
+.three-fourths.column {
+  width: 74%;
+}
+
+.children-thirds .column,
+.one-third.column {
+  width: 30.66%;
+}
+
+.two-thirds.column {
+  width: 65.33%;
+}
+
+.children-fifths .column,
+.one-fifth.column {
+  width: 16.8%;
+}
+
+.children-sixths .column,
+.one-sixth.column {
+  width: 13.33%;
+}
+
+.one-col {
+  width: 4.66666666667%;
+  height: 30px;
+}
+
+@media only screen and (max-width: 1020px) and (min-width: 959px) {
+  .container { width: 940px }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+  .container { width: 748px; }
+}
+
+@media only screen and (max-width: 767px) {
+  .container { width: 300px; }
+  
+  .one-half.column,
+  .one-fourth.column,
+  .three-fourths.column,
+  .one-third.column,
+  .two-thirds.column,
+  .one-fifth.column,
+  .one-sixth.column,
+  .children-halfs .column,
+  .children-thirds .column,
+  .children-fourths .column,
+  .children-fifths .column,
+  .children-sixths .column,
+  .column.last {
+    margin-bottom: 20px;
+    padding-right: 0;
+    width: 100%;
+  }
+
+}
+  
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+  .container { width: 420px; }
+}
+
+
+/* #Clearing
+================================================== */
+
+/* Self Clearing Goodness */
+.container:after,
+.content:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Use clearfix class on parent to clear nested columns,
+or wrap each row of columns in a <div class="row"> */
+
+.sidetabs:before,
+.sidetabs:after,
+.pagination:before,
+.pagination:after,
+.content:before,
+.content:after,
+.columns:before,
+.columns:after,
+.column:before,
+.column:after,
+.clearfix:before,
+.clearfix:after,
+.row-big:before,
+.row-big:after,
+.row:before,
+.row:after {
+  content: '\0020';
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0; 
+}
+
+.sidetabs:after,
+.pagination:after,
+.content:after,
+.columns:after,
+.column:after,
+.row:after,
+.row-big:after,
+.clearfix:after {
+  clear: both;
+}
+
+.sidetabs,
+.pagination,
+.content,
+.content,
+.columns,
+.columns,
+.column,
+.column,
+.row,
+.row-big,
+.clearfix {
+  zoom: 1;
+}
+
+/* You can also use a <br class="clear" /> to clear columns */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
